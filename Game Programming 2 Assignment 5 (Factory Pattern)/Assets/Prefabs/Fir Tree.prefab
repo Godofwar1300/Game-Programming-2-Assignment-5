@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 471828}
   - component: {fileID: 3384114}
   - component: {fileID: 2377290}
-  - component: {fileID: -3933533811103928691}
+  - component: {fileID: -3645325481711457795}
   m_Layer: 0
-  m_Name: Fir_Tree
-  m_TagString: Untagged
+  m_Name: Fir Tree
+  m_TagString: Fir
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &-3933533811103928691
+--- !u!114 &-3645325481711457795
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -4,27 +4,33 @@ using UnityEngine;
 
 public class SimpleTreeFactory : MonoBehaviour
 {
-    public GameObject firTreePrefab;
-    public GameObject oakTreePrefab;
-    public GameObject palmTreePrefab;
 
     private GameObject treeToGrow;
 
-    public GameObject GrowTree(string treeType)
+    public GameObject AddTreeScript(GameObject treePrefab, string treeType)
     {
-        treeToGrow = null;
+        treeToGrow = treePrefab;
 
         if (treeType.Equals("Fir Tree"))
         {
-            treeToGrow = firTreePrefab;
+            if (treeToGrow.GetComponent<Fir>() == null)
+            {
+                treeToGrow.AddComponent<Fir>();
+            }
         }
         else if (treeType.Equals("Oak Tree"))
         {
-            treeToGrow = oakTreePrefab;
+            if (treeToGrow.GetComponent<Oak>() == null)
+            {
+                treeToGrow.AddComponent<Oak>();
+            }
         }
         else if (treeType.Equals("Palm Tree"))
         {
-            treeToGrow = palmTreePrefab;
+            if (treeToGrow.GetComponent<Palm>() == null)
+            {
+                treeToGrow.AddComponent<Palm>();
+            }
         }
 
         return treeToGrow;

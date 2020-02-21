@@ -1,0 +1,136 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class GameController : MonoBehaviour
+{
+    public GameObject gameMenuPanel;
+    public Text totalScoreText;
+    public Text totalWoodIncomeText;
+    public Text totalTreesPlantedText;
+    public Text positionText;
+
+
+    public Text timerText;
+
+    public GameObject tutorialPanel;
+    public Text tutorialTimerText;
+
+
+    public GameObject gameOverPanel;
+    public Text gameOverTitleText;
+    public Text failureMessage;
+    public Text gameOverTotalScoreText;
+    public Text gameOverTotalTreesPlantedText;
+    public Text gameOverTotalWoodIncomeText;
+
+
+    public float duration;
+    public float tutorialDuration;
+    public bool isTutorialDone;
+    public bool didWin;
+
+
+    public TreeSpawner treeSpawner;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        isTutorialDone = false;
+        didWin = false;
+        tutorialPanel.SetActive(true);
+        gameMenuPanel.SetActive(true);
+        gameOverPanel.SetActive(false);
+
+        totalScoreText.text = "Score: " + 0;
+        totalWoodIncomeText.text = "Wood Income: $" + 0;
+        totalTreesPlantedText.text = "Trees Planted: " + 0;
+        positionText.text = "At position: \n" + 1;
+
+        StartCoroutine(TutorialTimer());
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        totalScoreText.text = "Score: " + Score.score;
+        totalWoodIncomeText.text = "Wood Income: $" + treeSpawner.totalWoodIncomeNum; ;
+        totalTreesPlantedText.text = "Trees Planted: " + Score.treeTotal;
+        positionText.text = "At position: \n" + (treeSpawner.treeSpawnIndex + 1);
+
+        if(Score.score == 300 && Score.treeTotal <= 25)
+        {
+            WinGame();
+        }
+
+        if(Score.score > 300)
+        {
+            failureMessage.text = "You went over the score limit of 300";
+            GameOver();
+        }
+        else if (Score.treeTotal > 25)
+        {
+            failureMessage.text = "You planted over 25 trees. That's too many!";
+            GameOver();
+        }
+    }
+
+    public void GameOver()
+    {
+        gameOverPanel.SetActive(true);
+        gameMenuPanel.SetActive(false);
+        gameOverTitleText.text = "Game Over";
+        gameOverTotalScoreText.text = "Total Score: \n" + Score.score;
+        gameOverTotalTreesPlantedText.text = "Total Planted Trees: \n" + Score.treeTotal;
+        gameOverTotalWoodIncomeText.text = "Total Income: \n$" + treeSpawner.totalWoodIncomeNum;
+    }
+
+    public void WinGame()
+    {
+        gameOverPanel.SetActive(true);
+        gameMenuPanel.SetActive(false);
+        gameOverTitleText.text = "You Won!";
+        gameOverTotalScoreText.text = "Total Score: \n" + Score.score;
+        gameOverTotalTreesPlantedText.text = "Total Planted Trees: \n" + Score.treeTotal;
+        gameOverTotalWoodIncomeText.text = "Total Income: \n$" + treeSpawner.totalWoodIncomeNum;
+    }
+
+    IEnumerator Timer()
+    {
+        duration = 30f;
+        
+        while(duration > 0)
+        {
+            duration -= Time.deltaTime;
+            timerText.text = "Timer: " + duration.ToString("00");
+            yield return null;
+        }
+
+        if (duration <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    IEnumerator TutorialTimer()
+    {
+        duration = 5f;
+
+        while(duration > 0)
+        {
+            duration -= Time.deltaTime;
+            tutorialTimerText.text = "Tutorial Timer: " + duration.ToString("00");
+            yield return null;
+        }
+
+        if(duration <= 0)
+        {
+            tutorialPanel.SetActive(false);
+            isTutorialDone = true;
+            StartCoroutine(Timer());
+        }
+    }
+}
