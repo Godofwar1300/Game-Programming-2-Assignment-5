@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * (Christopher Green)
+ * (SimpleTreeFactory.cs)
+ * (Assignment 5)
+ * (This factory handles adding scripts to prefabs if they don't already have one)
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

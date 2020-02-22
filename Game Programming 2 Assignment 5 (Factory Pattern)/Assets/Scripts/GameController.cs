@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * (Christopher Green)
+ * (GameController.cs)
+ * (Assignment 5)
+ * (This script handles basic game necessities.)
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

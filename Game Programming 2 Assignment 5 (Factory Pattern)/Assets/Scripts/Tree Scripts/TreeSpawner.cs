@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * (Christopher Green)
+ * (TreeSpawner.cs)
+ * (Assignment 5)
+ * (This script handles the spawning of the tree prefabs)
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

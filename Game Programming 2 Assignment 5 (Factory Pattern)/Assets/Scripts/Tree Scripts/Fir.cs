@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * (Christopher Green)
+ * (Fir.cs)
+ * (Assignment 5)
+ * (Holds information of the Fir Tree type)
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

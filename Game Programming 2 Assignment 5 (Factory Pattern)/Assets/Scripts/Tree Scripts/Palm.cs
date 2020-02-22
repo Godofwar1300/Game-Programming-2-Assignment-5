@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * (Christopher Green)
+ * (Palm.cs)
+ * (Assignment 5)
+ * (Holds information of the Palm Tree type)
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

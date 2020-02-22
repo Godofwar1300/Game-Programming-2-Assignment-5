@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * (Christopher Green)
+ * (SimplePrefabFactory.cs)
+ * (Assignment 5)
+ * (This factory handles the spawning of tree prefabs based on what treeType they are)
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * (Christopher Green)
+ * (Score.cs)
+ * (Assignment 5)
+ * (This static class handles the storing of data to be used in displaying of information using Text objects)
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
