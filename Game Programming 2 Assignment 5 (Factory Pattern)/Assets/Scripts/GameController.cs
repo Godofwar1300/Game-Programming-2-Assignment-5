@@ -128,7 +128,7 @@ public class GameController : MonoBehaviour
     IEnumerator TutorialTimer()
     {
         gameOverPanel.SetActive(false);
-        duration = 1f;
+        duration = 15f;
 
         while(duration > 0)
         {
