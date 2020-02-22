@@ -30,7 +30,6 @@ public class GameController : MonoBehaviour
     public float duration;
     public float tutorialDuration;
     public bool isTutorialDone;
-    public bool didWin;
 
 
     public TreeSpawner treeSpawner;
@@ -38,14 +37,17 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Score.score = 0;
+        Score.treeTotal = 0;
+        Score.woodCost = 0;
+
         isTutorialDone = false;
-        didWin = false;
         tutorialPanel.SetActive(true);
         gameMenuPanel.SetActive(true);
         gameOverPanel.SetActive(false);
 
         totalScoreText.text = "Score: " + 0;
-        totalWoodIncomeText.text = "Wood Income: $" + 0;
+        totalWoodIncomeText.text = "Income: $" + 0;
         totalTreesPlantedText.text = "Trees Planted: " + 0;
         positionText.text = "At position: \n" + 1;
 
@@ -57,18 +59,19 @@ public class GameController : MonoBehaviour
     void Update()
     {
         totalScoreText.text = "Score: " + Score.score;
-        totalWoodIncomeText.text = "Wood Income: $" + treeSpawner.totalWoodIncomeNum; ;
+        totalWoodIncomeText.text = "Income: $" + treeSpawner.totalWoodIncomeNum; ;
         totalTreesPlantedText.text = "Trees Planted: " + Score.treeTotal;
         positionText.text = "At position: \n" + (treeSpawner.treeSpawnIndex + 1);
 
-        if(Score.score == 300 && Score.treeTotal <= 25)
+        if(Score.score == 400 && Score.treeTotal <= 25)
         {
+            failureMessage.text = "You won, great job!";
             WinGame();
         }
 
         if(Score.score > 300)
         {
-            failureMessage.text = "You went over the score limit of 300";
+            failureMessage.text = "You went over the score limit of 400";
             GameOver();
         }
         else if (Score.treeTotal > 25)
@@ -100,6 +103,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator Timer()
     {
+        gameOverPanel.SetActive(false);
         duration = 30f;
         
         while(duration > 0)
@@ -117,7 +121,8 @@ public class GameController : MonoBehaviour
 
     IEnumerator TutorialTimer()
     {
-        duration = 5f;
+        gameOverPanel.SetActive(false);
+        duration = 15f;
 
         while(duration > 0)
         {

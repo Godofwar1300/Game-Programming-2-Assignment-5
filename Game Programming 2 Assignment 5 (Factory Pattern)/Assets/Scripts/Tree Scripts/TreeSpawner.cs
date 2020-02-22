@@ -14,7 +14,6 @@ public class TreeSpawner : MonoBehaviour
     private GameObject tree;
 
     public List<GameObject> treeSpawnLocations = new List<GameObject>();
-    public List<GameObject> trees = new List<GameObject>();
     private List<string> treeTypes = new List<string> { "Fir Tree", "Oak Tree", "Palm Tree" };
 
     public int totalWoodIncomeNum;
