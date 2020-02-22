@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour
             WinGame();
         }
 
-        if(Score.score > 300)
+        if(Score.score > 400)
         {
             failureMessage.text = "You went over the score limit of 400";
             GameOver();
@@ -128,7 +128,7 @@ public class GameController : MonoBehaviour
     IEnumerator TutorialTimer()
     {
         gameOverPanel.SetActive(false);
-        duration = 15f;
+        duration = 1f;
 
         while(duration > 0)
         {
